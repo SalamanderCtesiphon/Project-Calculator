@@ -37,19 +37,25 @@ click the number buttons. You should be storing the
 ‘display value’ in a variable somewhere for use 
 in the next step. */
 
-function displayNumber() {
-    const display = document.querySelector('.display');
-    display.textContent = a;
+const buttons = document.querySelectorAll('button');
+const display = document.querySelector('.display');
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        if (button.classList.contains('number')) {
+            display.textContent += button.textContent;
+        } else if (button.classList.contains('operator')) {
+            display.textContent += button.textContent;
+        } else if (button.classList.contains('decimal')) {
+            display.textContent += button.textContent;
+        } else if (button.classList.contains('clear')) {
+            display.textContent = '';
+        } else if (button.classList.contains('equals')) {
+            display.textContent = operate(display.textContent);
+        }
+    });
 }
 
-function displayNumber2() {
-    const display = document.querySelector('.display');
-    display.textContent = b;
-}
 
-document.querySelector('.one').addEventListener('click', () => {
-    a = 1;
-    displayNumber();
-}
 
 
