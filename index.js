@@ -2,7 +2,6 @@
 let a = 0;
 let b = 0;
 let c = 0;
-let operation = '';
 const buttons = document.querySelectorAll('button');
 const memory = document.querySelector('.memory');
 const current = document.querySelector('.current');
@@ -27,14 +26,14 @@ function divide() {
 }
 
 /*preform the operation indicated*/
-function operate(operator, a, b) {
-    if (operator === '+') {
+function operate(operation, a, b) {
+    if (operation === '+') {
         return add(a, b);
-    } else if (operator === '-') {
+    } else if (operation === '-') {
         return subtract(a, b);
-    } else if (operator === '*') {
+    } else if (operation === '*') {
         return multiply(a, b);
-    } else if (operator === '/') {
+    } else if (operation === '/') {
         return divide(a, b);
     }
 }
@@ -55,7 +54,7 @@ function populateDisplay() {
 function operator() {
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
-            if (button.classList.contains('operator')) {
+            if (button.classList.contains('operation')) {
                 operation = button.value;
                 firstArray.join('');
                 firstArray.push(button.value);
@@ -77,37 +76,56 @@ function equals() {
                 b = Number(firstArray.join(''));
                 c = operate(operation, a, b);
                 current.textContent = operate(operation, a, b);
-                memory.textContent = c;               
+                memory.textContent = a + operation + b + "="; 
+                current.textContent = c;  
+                a = c;
+                firstArray.length = 0;
+                b = 0;
+                c = 0; 
+                operator = '';       
             }
         });
     });
 }
 
-// a function that counts the number of times the equals button is clicked and changes the calculator logic to operate on the result of the previous operation
+/* a function that counts the number of times the equals button is clicked and 
+changes the calculator logic to operate on the result of the previous operation*/
 
 function count() {
-    let count = 0;
+    let counter = 0;
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
             if (button.classList.contains('equals')) {
-                count += 1;
-                if (count === 1) {
-                    equals();
-                } else if (count > 1) {
-                    a = c;
-                    b = Number(firstArray.join(''));
-                    c = operate(operation, a, b);
-                    current.textContent = operate(operation, a, b);
-                    memory.textContent = c;
-                } else if (button.classList.contains('clear')) {
-                    count = 0;
-                }
+                counter++;
+                console.log(counter);
             }
         });
     });
 }
 
-count();
+// a function that operates on the result of the previous operation
+
+function operateOnResult(counter) {
+    if (counter > 0) {
+        chainOperating();
+    }
+}                 
+
+function chainOperating() {
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            if (button.classList.contains('operation')) {
+                console.log(a);
+                console.log(b);
+                console.log(c);
+                console.log(firstArray);
+                console.log(secondArray);
+                console.log(current.textContent);
+                console.log(memory.textContent);
+            }
+        });
+    });
+} 
 
 /* a function that listens for the clear button to be clicked. 
 on click it clears the display and the memory*/
@@ -149,9 +167,12 @@ function decimal() {
     });
 }
 
+// function calls
 populateDisplay();
 operator();
 equals();
+operateOnResult();
+count();
 clear();
 backspace();
 decimal();
