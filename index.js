@@ -77,12 +77,37 @@ function equals() {
                 b = Number(firstArray.join(''));
                 c = operate(operation, a, b);
                 current.textContent = operate(operation, a, b);
-                memory.textContent = c;
-                
+                memory.textContent = c;               
             }
         });
     });
 }
+
+// a function that counts the number of times the equals button is clicked and changes the calculator logic to operate on the result of the previous operation
+
+function count() {
+    let count = 0;
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            if (button.classList.contains('equals')) {
+                count += 1;
+                if (count === 1) {
+                    equals();
+                } else if (count > 1) {
+                    a = c;
+                    b = Number(firstArray.join(''));
+                    c = operate(operation, a, b);
+                    current.textContent = operate(operation, a, b);
+                    memory.textContent = c;
+                } else if (button.classList.contains('clear')) {
+                    count = 0;
+                }
+            }
+        });
+    });
+}
+
+count();
 
 /* a function that listens for the clear button to be clicked. 
 on click it clears the display and the memory*/
