@@ -59,5 +59,44 @@ function populateDisplay() {
 populateDisplay();
 
 
+/* Add an event listener to the operator buttons. 
+that takes the array firstArray and stores it in a variable. and then logs the operation to be used later.*/
+
+let operator = '';
+
+function storeFirstArray() {
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            if (button.classList.contains('operator')) {
+                firstArray.push(button.value);
+                operator = button.value;
+                //convert the array to a string
+                const firstString = firstArray.join('');
+                //convert the string to a number
+                a = parseInt(firstString);
+                // clear the display
+                display.textContent = '';
+            }
+        });
+    });
+}
+
+storeFirstArray();
 
 
+// create a function that listens for the second array and stores it in a variable
+
+function storeSecondArray() {
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            if (button.classList.contains('number')) {
+                secondArray.push(button.value);
+                const secondString = secondArray.join('');
+                b = parseInt(secondString);
+                console.log(b);
+            }
+        });
+    });
+}
+
+storeSecondArray();
