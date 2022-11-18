@@ -75,14 +75,13 @@ function equals() {
                 firstArray.join('');
                 b = Number(firstArray.join(''));
                 c = operate(operation, a, b);
-                current.textContent = operate(operation, a, b);
                 memory.textContent = a + operation + b + "="; 
                 current.textContent = c;  
                 a = c;
                 firstArray.length = 0;
-                b = 0;
-                c = 0; 
-                operator = '';       
+                firstArray.push(c);
+
+                     
             }
         });
     });
