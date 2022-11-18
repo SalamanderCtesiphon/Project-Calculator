@@ -61,18 +61,26 @@ function populateDisplay() {
 populateDisplay();
 
 // a functin that listens for the operator button to be clicked. on click it converts the array to a number and
-// stores it in a variable. displaying the number and the operator on the memory display and stores the operator in a variable
+// stores it in a variable.
+let operation = '';
 
 function operator() {
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
             if (button.classList.contains('operator')) {
-                a = Number(firstArray.join(''));
-                display.textContent = a + button.value;
-                operator = button.value;
+                operatorion = button.value;
+                firstArray.join('');
+                firstArray.push(button.value);
+                memory.textContent = firstArray.join('');
+                a = Number(firstArray.slice(0, firstArray.length - 1).join(''));
+                firstArray.length = 0;
+                current.textContent = '0';
+                console.log(a);
+                console.log(operatorion)
             }
         });
     });
 }
 
 operator();
+
