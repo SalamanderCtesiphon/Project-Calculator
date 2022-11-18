@@ -2,11 +2,14 @@
 let a = 0;
 let b = 0;
 let c = 0;
+let operation = '';
+let nextOperation = '';
+let firstArray = [];
+let secondArray = [];
+
 const buttons = document.querySelectorAll('button');
 const memory = document.querySelector('.memory');
 const current = document.querySelector('.current');
-const firstArray = [];
-const secondArray = [];
 
 // the math functions
 function add() {
@@ -59,9 +62,20 @@ function operator() {
                 firstArray.join('');
                 firstArray.push(button.value);
                 memory.textContent = firstArray.join('');
-                a = Number(firstArray.slice(0, firstArray.length - 1).join(''));
-                firstArray.length = 0;
-                current.textContent = '0';
+                if (a !== 0) {
+                    operation = button.value;
+                    b = Number(firstArray.slice(0, firstArray.length - 1).join(''));
+                    c = operate(operation, a, b);
+                    memory.textContent = a + operation + b + "=";
+                    current.textContent = c;
+                    a = c;
+                    firstArray.length = 0;
+
+                } else {
+                    a = Number(firstArray.slice(0, firstArray.length - 1).join(''));
+                    firstArray.length = 0;
+                    current.textContent = '0';
+                };
             }
         });
     });
