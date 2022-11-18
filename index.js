@@ -88,44 +88,7 @@ function equals() {
     });
 }
 
-/* a function that counts the number of times the equals button is clicked and 
-changes the calculator logic to operate on the result of the previous operation*/
 
-function count() {
-    let counter = 0;
-    buttons.forEach((button) => {
-        button.addEventListener('click', () => {
-            if (button.classList.contains('equals')) {
-                counter++;
-                console.log(counter);
-            }
-        });
-    });
-}
-
-// a function that operates on the result of the previous operation
-
-function operateOnResult(counter) {
-    if (counter > 0) {
-        chainOperating();
-    }
-}                 
-
-function chainOperating() {
-    buttons.forEach((button) => {
-        button.addEventListener('click', () => {
-            if (button.classList.contains('operation')) {
-                console.log(a);
-                console.log(b);
-                console.log(c);
-                console.log(firstArray);
-                console.log(secondArray);
-                console.log(current.textContent);
-                console.log(memory.textContent);
-            }
-        });
-    });
-} 
 
 /* a function that listens for the clear button to be clicked. 
 on click it clears the display and the memory*/
@@ -171,8 +134,6 @@ function decimal() {
 populateDisplay();
 operator();
 equals();
-operateOnResult();
-count();
 clear();
 backspace();
 decimal();
