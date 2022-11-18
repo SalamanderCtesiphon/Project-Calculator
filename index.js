@@ -40,21 +40,23 @@ in the next step. */
 const buttons = document.querySelectorAll('button');
 const display = document.querySelector('.display');
 
-buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-        if (button.classList.contains('number')) {
-            display.textContent += button.textContent;
-        } else if (button.classList.contains('operator')) {
-            display.textContent += button.textContent;
-        } else if (button.classList.contains('decimal')) {
-            display.textContent += button.textContent;
-        } else if (button.classList.contains('clear')) {
-            display.textContent = '';
-        } else if (button.classList.contains('equals')) {
-            display.textContent = operate(display.textContent);
-        }
+const firstArray = [];
+const secondArray = [];
+
+//creat a fuction that takes user and populates and array with the numbers diplays them on the screen
+
+function populateDisplay() {
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            if (button.classList.contains('number')) {
+                firstArray.push(button.value);
+                display.textContent = firstArray.join('');
+            }
+        });
     });
 }
+
+populateDisplay();
 
 
 
