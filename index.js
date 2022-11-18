@@ -1,6 +1,7 @@
 //variable and array declarations
 let a = 0;
 let b = 0;
+let c = 0;
 let operation = '';
 const buttons = document.querySelectorAll('button');
 const memory = document.querySelector('.memory');
@@ -62,8 +63,6 @@ function operator() {
                 a = Number(firstArray.slice(0, firstArray.length - 1).join(''));
                 firstArray.length = 0;
                 current.textContent = '0';
-                console.log(a);
-                console.log(operation);
             }
         });
     });
@@ -76,9 +75,10 @@ function equals() {
             if (button.classList.contains('equals')) {
                 firstArray.join('');
                 b = Number(firstArray.join(''));
+                c = operate(operation, a, b);
                 current.textContent = operate(operation, a, b);
-                memory.textContent = '';
-                console.log(b);
+                memory.textContent = c;
+                
             }
         });
     });
