@@ -1,8 +1,8 @@
+//variable and array declarations
 let a = 0;
 let b = 0;
 let operation = '';
 const buttons = document.querySelectorAll('button');
-const display = document.querySelector('.display');
 const memory = document.querySelector('.memory');
 const current = document.querySelector('.current');
 const firstArray = [];
@@ -25,8 +25,7 @@ function divide() {
     return a / b;
 }
 
-/* Create a new function operate that takes an operator and 2 numbers 
-and then calls one of the above functions on the numbers.*/
+/*preform the operation indicated*/
 function operate(operator, a, b) {
     if (operator === '+') {
         return add(a, b);
@@ -39,12 +38,7 @@ function operate(operator, a, b) {
     }
 }
 
-/* Create the functions that populate the display when you 
-click the number buttons. You should be storing the 
-‘display value’ in a variable somewhere for use 
-in the next step. */
-/*creat a fuction that takes user and populates and array with 
-the numbers diplays them on the screen/ */
+/* display the input to the screen*/
 function populateDisplay() {
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
@@ -56,8 +50,7 @@ function populateDisplay() {
     });
 }
 
-// a functin that listens for the operator button to be clicked. on click it converts the array to a number and
-// stores it in a variable.
+/* listen for operator button to be pressed and stores the operation and the number for latter use*/
 function operator() {
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
@@ -76,9 +69,7 @@ function operator() {
     });
 }
 
-// a function that listens for the equals button to be clicked. on click it converts the array to a number and
-// stores it in a variable. it then calls the operate function and passes the operator and the two numbers
-// as arguments. it then displays the result on the screen.
+/* performs the stored operation on the two nunbers*/
 function equals() {
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
@@ -95,7 +86,6 @@ function equals() {
 
 /* a function that listens for the clear button to be clicked. 
 on click it clears the display and the memory*/
-
 function clear() {
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
@@ -109,7 +99,8 @@ function clear() {
     });
 }
 
-// a function that listens for the backspace button to be clicked. on click it removes the last number from the display
+/* a function that listens for the backspace button to be clicked.
+ * on click it removes the last number from the display*/
 function backspace() {
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
