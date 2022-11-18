@@ -68,7 +68,7 @@ function operator() {
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
             if (button.classList.contains('operator')) {
-                operatorion = button.value;
+                operation = button.value;
                 firstArray.join('');
                 firstArray.push(button.value);
                 memory.textContent = firstArray.join('');
@@ -76,11 +76,81 @@ function operator() {
                 firstArray.length = 0;
                 current.textContent = '0';
                 console.log(a);
-                console.log(operatorion)
+                console.log(operation);
             }
         });
     });
 }
 
 operator();
+
+// a function that listens for the equals button to be clicked. on click it converts the array to a number and
+// stores it in a variable. it then calls the operate function and passes the operator and the two numbers
+// as arguments. it then displays the result on the screen.
+
+function equals() {
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            if (button.classList.contains('equals')) {
+                firstArray.join('');
+                b = Number(firstArray.join(''));
+                current.textContent = operate(operation, a, b);
+                memory.textContent = '';
+                console.log(b);
+            }
+        });
+    });
+}
+
+equals();
+
+// a function that listens for the clear button to be clicked. on click it clears the display and the memory
+
+function clear() {
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            if (button.classList.contains('clear')) {
+                firstArray.length = 0;
+                secondArray.length = 0;
+                current.textContent = '0';
+                memory.textContent = '';
+            }
+        });
+    });
+}
+
+clear();
+
+// a function that listens for the backspace button to be clicked. on click it removes the last number from the display
+
+function backspace() {
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            if (button.classList.contains('backspace')) {
+                firstArray.pop();
+                current.textContent = firstArray.join('');
+            }
+        });
+    });
+}
+
+backspace();
+
+// a function that listens for the decimal button to be clicked. on click it adds a decimal to the display
+
+function decimal() {
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            if (button.classList.contains('decimal')) {
+                firstArray.push(button.value);
+                current.textContent = firstArray.join('');
+            }
+        });
+    });
+}
+
+decimal();
+
+
+
 
