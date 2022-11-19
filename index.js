@@ -44,9 +44,13 @@ function populateDisplay() {
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
             if (button.classList.contains('number')) {
+                if (button.value === '0' && firstArray.length === 0) {
+                    return;
+                } else {
                 firstArray.push(button.value);
                 current.textContent = firstArray.join('');
                 return firstArray;
+                }
             }
         });
     });
@@ -145,6 +149,9 @@ function backspace() {
                 } else {
                     firstArray.pop();
                     current.textContent = firstArray.join('');
+                    if (firstArray.length === 0) {
+                        current.textContent = '0';
+                    }
                 }
                 
             }
@@ -157,12 +164,27 @@ function decimal() {
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
             if (button.classList.contains('decimal')) {
+                if (firstArray.length === 0) {
+                    firstArray.push('0', '.');
+                    current.textContent = firstArray.join('');
+                } else {
                 firstArray.push(button.value);
                 current.textContent = firstArray.join('');
+                }
             }
         });
     });
 }
+
+// set the maximum number of digits to 16
+
+function maxDigits() {
+    if (firstArray.length > 16) {
+        firstArray.length = 16;
+        current.textContent = firstArray.join('');
+    }
+}
+
 
 // function calls
 populateDisplay();
@@ -171,3 +193,4 @@ equals();
 clear();
 backspace();
 decimal();
+maxDigits();
