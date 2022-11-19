@@ -68,8 +68,14 @@ function operator() {
                     a = Number(firstArray.join(''));
                     firstArray.length = 0;
                     populateDisplay();
-                    operator();
-                } 
+                    return a;
+                } else {
+                    firstArray.pop();
+                    b = Number(firstArray.join(''));
+                    firstArray.length = 0;
+                    populateDisplay();
+                    return a;
+                }
             }
         });
     });
