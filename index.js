@@ -63,6 +63,7 @@ function operator() {
                 firstArray.push(button.value);
                 memory.textContent = firstArray.join('');
                 if (a !== 0) {
+/* I need to figure out how to store the operation and the number for later use*/
                     operation = button.value;
                     b = Number(firstArray.slice(0, firstArray.length - 1).join(''));
                     c = operate(operation, a, b);
