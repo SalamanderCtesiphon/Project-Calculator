@@ -59,8 +59,8 @@ function operator() {
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
             if (button.classList.contains('operator')) {
-                operation = button.value;
                 if (a === 0) {
+                    operation = button.value;
                     firstArray.join('');
                     a = Number(firstArray.join(''));
                     memory.textContent = a + ' ' + ' ' + operation;
@@ -73,9 +73,10 @@ function operator() {
                     firstArray.join('');
                     b = Number(firstArray.join(''));
                     c = operate(operation, a, b);
-                    memory.textContent = a + operation + b;
+                    memory.textContent = a + '' + '' + operation + '' + '' + b +"" + "=";
                     current.textContent = c;
                     a = c;
+                    operation = button.value;
                     firstArray.length = 0;
                     console.log(a);
                     console.log(operation);
@@ -116,6 +117,11 @@ function clear() {
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
             if (button.classList.contains('clear')) {
+                a = 0;
+                b = 0;
+                c = 0;
+                operation = '';
+                nextOperation = '';
                 firstArray.length = 0;
                 secondArray.length = 0;
                 current.textContent = '0';
