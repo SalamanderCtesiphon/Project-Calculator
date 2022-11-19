@@ -60,14 +60,27 @@ function operator() {
         button.addEventListener('click', () => {
             if (button.classList.contains('operator')) {
                 operation = button.value;
-                a = Number(firstArray.join(''));
-                firstArray = [];
-                current.textContent = '0';
-                memory.textContent = a + operation;
-                console.log(a);
-                console.log(operation);
-                console.log(firstArray);
-                return operation;
+                if (a === 0) {
+                    firstArray.join('');
+                    a = Number(firstArray.join(''));
+                    memory.textContent = a + ' ' + ' ' + operation;
+                    current.textContent = '0';
+                    firstArray.length = 0;
+                    console.log(a);
+                    console.log(operation);
+                    console.log(firstArray);
+                } else {
+                    firstArray.join('');
+                    b = Number(firstArray.join(''));
+                    c = operate(operation, a, b);
+                    memory.textContent = a + operation + b;
+                    current.textContent = c;
+                    a = c;
+                    firstArray.length = 0;
+                    console.log(a);
+                    console.log(operation);
+                    console.log(firstArray);
+                }
                 
             }
         });
