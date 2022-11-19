@@ -3,9 +3,7 @@ let a = 0;
 let b = 0;
 let c = 0;
 let operation = '';
-let nextOperation = '';
 let firstArray = [];
-let secondArray = [];
 
 const buttons = document.querySelectorAll('button');
 const memory = document.querySelector('.memory');
@@ -88,7 +86,11 @@ function equals() {
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
             if (button.classList.contains('equals')) {
-                firstArray.join('');
+                if (operation === '') {
+                    memory.textContent = firstArray.join('');
+                    return;
+                } else {
+                    firstArray.join('');
                 b = Number(firstArray.join(''));
                 c = operate(operation, a, b);
                 memory.textContent = a + operation + b + "="; 
@@ -96,9 +98,16 @@ function equals() {
                 a = 0;
                 b = 0;
                 firstArray.length = 0; 
-                firstArray.push(c);
+                // take c and split it into an array
+                let cArray = c.toString().split('');
+                // loop through the array and push each number into the firstArray
+                for (let i = 0; i < cArray.length; i++) {
+                    firstArray.push(cArray[i]);
+                }
                 operation = '';
-                c = 0;                   
+                c = 0; 
+                console.log(firstArray); 
+            }
             }
         });
     });
@@ -116,9 +125,7 @@ function clear() {
                 b = 0;
                 c = 0;
                 operation = '';
-                nextOperation = '';
                 firstArray.length = 0;
-                secondArray.length = 0;
                 current.textContent = '0';
                 memory.textContent = '';
             }
@@ -132,8 +139,14 @@ function backspace() {
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
             if (button.classList.contains('backspace')) {
-                firstArray.pop();
-                current.textContent = firstArray.join('');
+                if (firstArray.length === 0) {
+                    current.textContent = '0';
+                    return;
+                } else {
+                    firstArray.pop();
+                    current.textContent = firstArray.join('');
+                }
+                
             }
         });
     });
