@@ -62,21 +62,14 @@ function operator() {
                 firstArray.join('');
                 firstArray.push(button.value);
                 memory.textContent = firstArray.join('');
-                if (a !== 0) {
-/* I need to figure out how to store the operation and the number for later use*/
-                    operation = button.value;
-                    b = Number(firstArray.slice(0, firstArray.length - 1).join(''));
-                    c = operate(operation, a, b);
-                    memory.textContent = a + operation + b + "=";
-                    current.textContent = c;
-                    a = c;
+                if (a === 0) {
+                    // pop the operation off the array and join the rest of the numbers
+                    firstArray.pop();
+                    a = Number(firstArray.join(''));
                     firstArray.length = 0;
-
-                } else {
-                    a = Number(firstArray.slice(0, firstArray.length - 1).join(''));
-                    firstArray.length = 0;
-                    current.textContent = '0';
-                };
+                    populateDisplay();
+                    operator();
+                } 
             }
         });
     });
