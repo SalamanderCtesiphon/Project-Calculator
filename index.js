@@ -48,6 +48,7 @@ function populateDisplay() {
             if (button.classList.contains('number')) {
                 firstArray.push(button.value);
                 current.textContent = firstArray.join('');
+                return firstArray;
             }
         });
     });
