@@ -66,9 +66,6 @@ function operator() {
                     memory.textContent = a + ' ' + ' ' + operation;
                     current.textContent = '0';
                     firstArray.length = 0;
-                    console.log(a);
-                    console.log(operation);
-                    console.log(firstArray);
                 } else {
                     firstArray.join('');
                     b = Number(firstArray.join(''));
@@ -78,9 +75,6 @@ function operator() {
                     a = c;
                     operation = button.value;
                     firstArray.length = 0;
-                    console.log(a);
-                    console.log(operation);
-                    console.log(firstArray);
                 }
                 
             }
@@ -99,11 +93,12 @@ function equals() {
                 c = operate(operation, a, b);
                 memory.textContent = a + operation + b + "="; 
                 current.textContent = c;  
-                a = c;
-                firstArray.length = 0;
+                a = 0;
+                b = 0;
+                firstArray.length = 0; 
                 firstArray.push(c);
-
-                     
+                operation = '';
+                c = 0;                   
             }
         });
     });
