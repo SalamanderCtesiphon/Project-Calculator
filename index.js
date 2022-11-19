@@ -58,29 +58,22 @@ function populateDisplay() {
 function operator() {
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
-            if (button.classList.contains('operation')) {
+            if (button.classList.contains('operator')) {
                 operation = button.value;
-                firstArray.join('');
-                firstArray.push(button.value);
-                memory.textContent = firstArray.join('');
-                if (a === 0) {
-                    // pop the operation off the array and join the rest of the numbers
-                    firstArray.pop();
-                    a = Number(firstArray.join(''));
-                    firstArray.length = 0;
-                    populateDisplay();
-                    return a;
-                } else {
-                    firstArray.pop();
-                    b = Number(firstArray.join(''));
-                    firstArray.length = 0;
-                    populateDisplay();
-                    return a;
-                }
+                a = Number(firstArray.join(''));
+                firstArray = [];
+                current.textContent = '0';
+                memory.textContent = a + operation;
+                console.log(a);
+                console.log(operation);
+                console.log(firstArray);
+                return operation;
+                
             }
         });
     });
 }
+
 
 /* performs the stored operation on the two nunbers*/
 function equals() {
