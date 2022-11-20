@@ -4,6 +4,7 @@ let b = 0;
 let c = 0;
 let operation = '';
 let firstArray = [];
+let secondArray = [];
 
 const buttons = document.querySelectorAll('button');
 const memory = document.querySelector('.memory');
@@ -46,7 +47,7 @@ function populateDisplay() {
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
             if (button.classList.contains('number')) {
-                if (firstArray.length > 15) {
+                if (firstArray.length > 9) {
                     firstArray.pop();
                     current.textContent = firstArray.join('');
                 } else {
@@ -87,13 +88,13 @@ function operator() {
                         firstArray.length = 0;
                     } else {
                         c = operate(operation, a, b);
-                        //round answer to 15 digits total displayed
-                        c = c.toFixed(15);
-
-                        //cut off trailing zeros
                         c = Number(c);
+                        // split c into and array and round to 9 digits total displayed
+                        secondArray = c.toString().split('');
+                        secondArray.length = 9;
                         memory.textContent = a + ' ' + ' ' + operation + ' ' + ' ' + b + ''  +  '=';
-                        current.textContent = c;
+                        current.textContent = secondArray.join('');
+                        c = Number(secondArray.join(''));
                         a = c;
                         operation = button.value;
                         firstArray.length = 0;
@@ -127,12 +128,13 @@ function equals() {
                         firstArray.length = 0;
                     } else {
                         c = operate(operation, a, b);
-                        //round answer to 10 decimal places
-                        c = c.toFixed(15);
-                        //cut off trailing zeros
                         c = Number(c);
+                        // split c into and array and round to 9 digits total displayed
+                        secondArray = c.toString().split('');
+                        secondArray.length = 9;
                         memory.textContent = a + ' '  + operation + ' '  + b + " " + "="; 
-                        current.textContent = c;  
+                        current.textContent = secondArray.join('');
+                        c = Number(secondArray.join(''));  
                         a = 0;
                         b = 0;
                         firstArray.length = 0; 
