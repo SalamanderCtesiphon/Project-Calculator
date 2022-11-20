@@ -16,32 +16,40 @@ body {
 .page {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(10, 1fr);
+    grid-template-rows: repeat(20, 1fr);
     height: 100vh;
     width: 100vw;
+    color: lime;
 }
 
 .header {
     grid-column: 1 / 6;
-    grid-row: 1 / 2;
+    grid-row: 1 / 3;
     color: lime;
     font-size: 2rem;
-    border: 2px solid lime;
+    border-bottom: 2px solid lime;
     width: 100%;
     background: rgb(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .left-sidebar {
-    border: 2px solid lime;
     height: 100%;
     width: 20vw;
-    grid-template-columns: 1 / 2;
-    grid-template-rows: 2 / 10;
+    grid-column: 1 / 2;
+    grid-row: 3 / 20;
 }
 
 .main {
-    grid-template-columns: 2 / 5;
-    grid-template-rows: 2 / 10;
+    grid-column: 2 / 5;
+    grid-row: 3 / 20;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .calculator {
@@ -128,19 +136,21 @@ img {
 
 
 .right-sidebar {
-    grid-template-columns: 5 / 6;
-    grid-template-rows: 2 / 10;
-    border: 2px solid lime;
+    grid-column: 5 / 6;
+    grid-row: 3 / 20;
     height: 100%;
     width: 20vw;
 }
 
 
-footer {
+.footer {
     grid-column: 1 / 6;
-    grid-row: 10 / 11;
+    grid-row: 20 / 21;
     color: lime;
-    border: 2px solid lime;
+    background: rgb(8, 8, 8, 0.6);
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
