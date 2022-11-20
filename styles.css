@@ -16,6 +16,21 @@ body {
     min-width: fit-content;
 }
 
+.header {
+    color: lime;
+    font-size: 2rem;
+    border: 2px solid lime;
+    width: 100%;
+    background: rgb(0, 0, 0, 0.75);
+}
+
+.left-sidebar {
+    border: 2px solid lime;
+    height: 100%;
+    width: 20vw;
+}
+
+
 .calculator {
     width: 30vw;
     min-width: 300px;
@@ -29,11 +44,6 @@ body {
     flex-direction: column;
     border-radius: 10px 10px 0px 0px;
     border: 4px solid black;
-}
-
-.header {
-    color: lime;
-    font-size: 2rem;
 }
 
 .display {
@@ -58,6 +68,7 @@ body {
     align-items: flex-end;
 
 }
+
 
 .current {
     font-size: 4.5vh;
@@ -100,6 +111,14 @@ img {
 .clear {
     grid-column: 1/3;
 }
+
+
+.right-sidebar {
+    border: 2px solid lime;
+    height: 100%;
+    width: 20vw;
+}
+
 
 footer {
     color: lime;
