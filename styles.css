@@ -18,7 +18,10 @@ body {
 
 .calculator {
     width: 30vw;
+    min-width: 300px;
+    max-width: 350px;
     height: 60vh;
+    max-height: fit-content;
     background-color: silver;
     display: flex;
     justify-content: center;
