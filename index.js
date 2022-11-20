@@ -34,7 +34,7 @@ function operate(operation, a, b) {
         return subtract(a, b);
     } else if (operation === '*') {
         return multiply(a, b);
-    } else if (operation === '&#247') {
+    } else if (operation === '/') {
         return divide(a, b);
     }
 }
@@ -84,7 +84,7 @@ function operator() {
                         c = c.toFixed(10);
                         //cut off trailing zeros
                         c = Number(c);
-                        memory.textContent = a + '' + '' + operation + '' + '' + b +"" + "=";
+                        memory.textContent = a + ' ' + ' ' + operation + ' ' + ' ' + b + ''  +  '=';
                         current.textContent = c;
                         a = c;
                         operation = button.value;
@@ -108,26 +108,36 @@ function equals() {
                     return;
                 } else {
                     firstArray.join('');
-                b = Number(firstArray.join(''));
-                c = operate(operation, a, b);
-                //round answer to 10 decimal places
-                c = c.toFixed(10);
-                //cut off trailing zeros
-                c = Number(c);
-                memory.textContent = a + '' + '' + operation + '' + '' + b +"" + "=";
-                memory.textContent = a + operation + b + "="; 
-                current.textContent = c;  
-                a = 0;
-                b = 0;
-                firstArray.length = 0; 
-                // take c and split it into an array
-                let cArray = c.toString().split('');
-                // loop through the array and push each number into the firstArray
-                for (let i = 0; i < cArray.length; i++) {
-                    firstArray.push(cArray[i]);
-                }
-                operation = '';
-                c = 0; 
+                    b = Number(firstArray.join(''));
+                    if (b === 0 && operation === '/') {
+                        current.textContent = '!! division by zero';
+                        memory.textContent = '';
+                        a = 0;
+                        b = 0;
+                        c = 0;
+                        operation = '';
+                        firstArray.length = 0;
+                    } else {
+                        c = operate(operation, a, b);
+                        //round answer to 10 decimal places
+                        c = c.toFixed(10);
+                        //cut off trailing zeros
+                        c = Number(c);
+                        memory.textContent = a + ' ' + ' ' + operation + ' ' + ' ' +  b  + '' + '=';
+                        memory.textContent = a + ' '  + operation + ' '  + b + " " + "="; 
+                        current.textContent = c;  
+                        a = 0;
+                        b = 0;
+                        firstArray.length = 0; 
+                        // take c and split it into an array
+                        let cArray = c.toString().split('');
+                        // loop through the array and push each number into the firstArray
+                        for (let i = 0; i < cArray.length; i++) {
+                            firstArray.push(cArray[i]);
+                        }
+                        operation = '';
+                        c = 0; 
+                    }
             }
             }
         });
@@ -200,31 +210,11 @@ function decimal() {
     });
 }
 
-// function to prevent division by zero
 
-function divideByZero() {
-    buttons.forEach((button) => {
-        button.addEventListener('click', () => {
-            if (button.classList.contains('equals')) {
-                if (operation === '/') {
-                    if (b === 0) {
-                        current.textContent = '!! division by zero';
-                        memory.textContent = '';
-                        a = 0;
-                        b = 0;
-                        c = 0;
-                        operation = '';
-                        firstArray.length = 0;
-                    }
-                }
-            }
-        });
-    });
-}
 
 
 // function calls
-divideByZero();
+
 populateDisplay();
 operator();
 equals();
