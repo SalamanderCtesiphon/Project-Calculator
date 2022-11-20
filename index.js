@@ -131,7 +131,6 @@ function equals() {
                         c = c.toFixed(15);
                         //cut off trailing zeros
                         c = Number(c);
-                        memory.textContent = a + ' ' + ' ' + operation + ' ' + ' ' +  b  + '' + '=';
                         memory.textContent = a + ' '  + operation + ' '  + b + " " + "="; 
                         current.textContent = c;  
                         a = 0;
