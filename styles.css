@@ -148,7 +148,7 @@ button {
 
 .backspace {
     grid-column: 3/5;
-    background-color: lime;
+    background-color: black;
 }
 
 img {
