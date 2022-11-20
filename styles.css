@@ -6,7 +6,8 @@
 
 body {
     font-family: 'Fragment Mono', monospace;
-    background-color: #f1f1f1;
+    background-image: url(pexels-felix-mittermeier-957061.jpg);
+    background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -18,28 +19,47 @@ body {
 .calculator {
     width: 20vw;
     height: 60vh;
-    background: rgb(166, 102, 102);
+    background-color: silver;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    border-radius: 10px 10px 0px 0px;
+    border: 4px solid black;
+}
+
+.header {
+    color: lime;
 }
 
 .display {
     width: 100%;
     height: 35%;
-    background: rgb(154, 152, 152);
+    color:  lime;
+    background: black;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
     padding: 0px 10px;
-    border-radius: 10px 10px 0px 0px;
+    border-radius: 4px 4px 0px 0px;
+    border: 4px solid black;
+}
+
+.memory {
+
 }
 
 .current {
-    font-size: 2rem;
-    color: black;
+    font-size: 3rem;
+    color:  lime;
+}
+
+button {
+    color:  lime;
+    font-size: 1.5rem;
+    background: black;
+    border-radius: 4px;
 }
 
 .button-field {
@@ -62,3 +82,4 @@ body {
     grid-column: 1/3;
 }
 
+.
