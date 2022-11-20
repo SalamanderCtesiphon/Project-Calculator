@@ -9,6 +9,8 @@ const buttons = document.querySelectorAll('button');
 const memory = document.querySelector('.memory');
 const current = document.querySelector('.current');
 
+memory.textContent = 'ready...';
+
 // the math functions
 function add() {
   return a + b;
@@ -44,12 +46,17 @@ function populateDisplay() {
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
             if (button.classList.contains('number')) {
-                if (button.value === '0' && firstArray.length === 0) {
-                    return;
+                if (firstArray.length > 15) {
+                    firstArray.pop();
+                    current.textContent = firstArray.join('');
                 } else {
-                firstArray.push(button.value);
-                current.textContent = firstArray.join('');
-                return firstArray;
+                    if (button.value === '0' && firstArray.length === 0) {
+                        return;
+                    } else {
+                    firstArray.push(button.value);
+                    current.textContent = firstArray.join('');
+                    return firstArray;
+                    }
                 }
             }
         });
@@ -71,8 +78,8 @@ function operator() {
                     firstArray.join('');
                     b = Number(firstArray.join(''));
                     if (b === 0 && operation === '/') {
-                        current.textContent = '!! division by zero';
-                        memory.textContent = '';
+                        memory.textContent = ' ERROR!! division by zero';
+                        current.textContent = '0';
                         a = 0;
                         b = 0;
                         c = 0;
@@ -80,8 +87,9 @@ function operator() {
                         firstArray.length = 0;
                     } else {
                         c = operate(operation, a, b);
-                        //round answer to 10 decimal places
-                        c = c.toFixed(10);
+                        //round answer to 15 digits total displayed
+                        c = c.toFixed(15);
+
                         //cut off trailing zeros
                         c = Number(c);
                         memory.textContent = a + ' ' + ' ' + operation + ' ' + ' ' + b + ''  +  '=';
@@ -110,8 +118,8 @@ function equals() {
                     firstArray.join('');
                     b = Number(firstArray.join(''));
                     if (b === 0 && operation === '/') {
-                        current.textContent = '!! division by zero';
-                        memory.textContent = '';
+                        memory.textContent = ' ERROR!! division by zero';
+                        current.textContent = '0'
                         a = 0;
                         b = 0;
                         c = 0;
@@ -120,7 +128,7 @@ function equals() {
                     } else {
                         c = operate(operation, a, b);
                         //round answer to 10 decimal places
-                        c = c.toFixed(10);
+                        c = c.toFixed(15);
                         //cut off trailing zeros
                         c = Number(c);
                         memory.textContent = a + ' ' + ' ' + operation + ' ' + ' ' +  b  + '' + '=';
@@ -158,7 +166,7 @@ function clear() {
                 operation = '';
                 firstArray.length = 0;
                 current.textContent = '0';
-                memory.textContent = '';
+                memory.textContent = 'ready...';
             }
         });
     });
@@ -209,6 +217,9 @@ function decimal() {
         });
     });
 }
+
+// limit the number of characters that can be displayed on the screen
+
 
 
 
