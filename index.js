@@ -34,7 +34,7 @@ function operate(operation, a, b) {
         return subtract(a, b);
     } else if (operation === '*') {
         return multiply(a, b);
-    } else if (operation === '/') {
+    } else if (operation === '&#247') {
         return divide(a, b);
     }
 }
