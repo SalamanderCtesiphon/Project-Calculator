@@ -20,6 +20,7 @@ body {
     height: 100vh;
     width: 100vw;
     color: lime;
+
 }
 
 .header {
@@ -29,17 +30,40 @@ body {
     font-size: 2rem;
     border-bottom: 1px solid lime;
     width: 100%;
-    background: rgb(0, 0, 0, 0.6);
+    background: rgb(0, 0, 0, 0.7);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 2vh;
+}
+
+a {
+    text-decoration: none;
+    color: lime;
 }
 
 .left-sidebar {
     height: 100%;
-    width: 20vw;
+    width: 15vw;
     grid-column: 1 / 2;
     grid-row: 3 / 20;
+    padding-left: 1vw;
+}
+
+.left-side-header {
+    font-size: 3.5vh;
+    padding: 1vh;
+}
+
+.left-list {
+    list-style: none;
+    margin-top: 2vh;
+    font-size: 2vh;
+    padding: 1vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 20%;
 }
 
 .main {
@@ -140,6 +164,31 @@ img {
     grid-row: 3 / 20;
     height: 100%;
     width: 20vw;
+    padding-left: 1vw;
+}
+
+.right-list {
+    list-style: none;
+    margin-top: 2vh;
+    padding-bottom: 6vh;
+    font-size: 2vh;
+    padding: 1vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 100%;
+    
+    
+}
+
+.right-list li {
+    margin-bottom: 6vh;
+}
+
+.right-header {
+    font-size: 3vh;
+    padding: 1vh;
 }
 
 
@@ -147,10 +196,11 @@ img {
     grid-column: 1 / 6;
     grid-row: 20 / 21;
     color: lime;
-    background: rgb(8, 8, 8, 0.6);
+    background: rgb(8, 8, 8, 0.2);
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: vh;
 
 }
