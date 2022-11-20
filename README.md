@@ -1,4 +1,1 @@
-# Project-Calculator
-The Calculator assignment from the Odin Project's fundamentals JavaScript course.
-
-A repository for the Calculator assignment from the Odin Project's fundamentals JavaScript course.
+ A static website aplication using javacript to provide the funtionality for the calculations preformed but the calculator. The page is designed utilizing vanilla CSS and HTML.
