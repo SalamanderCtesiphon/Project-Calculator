@@ -63,7 +63,6 @@ function operator() {
             if (button.classList.contains('operator')) {
                 if (a === 0) {
                     operation = button.value;
-                    firstArray.join('');
                     a = Number(firstArray.join(''));
                     memory.textContent = a + ' ' + ' ' + operation;
                     current.textContent = '0';
@@ -71,12 +70,27 @@ function operator() {
                 } else {
                     firstArray.join('');
                     b = Number(firstArray.join(''));
-                    c = operate(operation, a, b);
-                    memory.textContent = a + '' + '' + operation + '' + '' + b +"" + "=";
-                    current.textContent = c;
-                    a = c;
-                    operation = button.value;
-                    firstArray.length = 0;
+                    if (b === 0 && operation === '/') {
+                        current.textContent = '!! division by zero';
+                        memory.textContent = '';
+                        a = 0;
+                        b = 0;
+                        c = 0;
+                        operation = '';
+                        firstArray.length = 0;
+                    } else {
+                        c = operate(operation, a, b);
+                        //round answer to 10 decimal places
+                        c = c.toFixed(10);
+                        //cut off trailing zeros
+                        c = Number(c);
+                        memory.textContent = a + '' + '' + operation + '' + '' + b +"" + "=";
+                        current.textContent = c;
+                        a = c;
+                        operation = button.value;
+                        firstArray.length = 0;
+                        memory.textContent = a + ' ' + ' ' + operation;
+                    }
                 }
                 
             }
@@ -91,12 +105,16 @@ function equals() {
         button.addEventListener('click', () => {
             if (button.classList.contains('equals')) {
                 if (operation === '') {
-                    memory.textContent = firstArray.join('');
                     return;
                 } else {
                     firstArray.join('');
                 b = Number(firstArray.join(''));
                 c = operate(operation, a, b);
+                //round answer to 10 decimal places
+                c = c.toFixed(10);
+                //cut off trailing zeros
+                c = Number(c);
+                memory.textContent = a + '' + '' + operation + '' + '' + b +"" + "=";
                 memory.textContent = a + operation + b + "="; 
                 current.textContent = c;  
                 a = 0;
@@ -110,7 +128,6 @@ function equals() {
                 }
                 operation = '';
                 c = 0; 
-                console.log(firstArray); 
             }
             }
         });
@@ -160,37 +177,57 @@ function backspace() {
 }
 
 // a function that listens for the decimal button to be clicked. on click it adds a decimal to the display
+
+
 function decimal() {
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
             if (button.classList.contains('decimal')) {
-                if (firstArray.length === 0) {
-                    firstArray.push('0', '.');
-                    current.textContent = firstArray.join('');
+                if (firstArray.includes('.')) {
+                    return;
                 } else {
-                firstArray.push(button.value);
-                current.textContent = firstArray.join('');
+                    if (firstArray.length === 0) {
+                        firstArray.push('0', '.');
+                        current.textContent = firstArray.join('');
+                    } else {
+                    firstArray.push(button.value);
+                    current.textContent = firstArray.join('');
+                    }
+                }
+                
+            }
+        });
+    });
+}
+
+// function to prevent division by zero
+
+function divideByZero() {
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            if (button.classList.contains('equals')) {
+                if (operation === '/') {
+                    if (b === 0) {
+                        current.textContent = '!! division by zero';
+                        memory.textContent = '';
+                        a = 0;
+                        b = 0;
+                        c = 0;
+                        operation = '';
+                        firstArray.length = 0;
+                    }
                 }
             }
         });
     });
 }
 
-// set the maximum number of digits to 16
-
-function maxDigits() {
-    if (firstArray.length > 16) {
-        firstArray.length = 16;
-        current.textContent = firstArray.join('');
-    }
-}
-
 
 // function calls
+divideByZero();
 populateDisplay();
 operator();
 equals();
 clear();
 backspace();
 decimal();
-maxDigits();
