@@ -27,8 +27,8 @@ body {
     grid-column: 1 / 6;
     grid-row: 1 / 3;
     color: lime;
-    font-size: 2rem;
-    border-bottom: 1px solid lime;
+    font-size: 2.5vh;
+    border-bottom: 1px solid rgba(0, 255, 0, 0.4);
     width: 100%;
     background: rgb(0, 0, 0, 0.7);
     display: flex;
@@ -48,10 +48,16 @@ a {
     grid-column: 1 / 2;
     grid-row: 3 / 20;
     padding-left: 1vw;
+    height: 105%;
+    border: 1px solid rgba(0, 255, 0, 0.4);
+    background: rgb(0, 0, 0);
+    border-radius: 0 0 0 10px;
+    margin-left: 1vh;
 }
 
 .left-side-header {
     font-size: 3.5vh;
+    font-weight: bolder;
     padding: 1vh;
 }
 
@@ -149,10 +155,16 @@ button {
 .backspace {
     grid-column: 3/5;
     background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1.5vh;
 }
 
 img {
     height: 4vh;
+    width: 4vh;
+    margin-bottom: 1.5vh;
 }
 .clear {
     grid-column: 1/3;
@@ -167,24 +179,45 @@ img {
     padding-left: 1vw;
 }
 
+.right-header {
+    font-size: 4vh;
+    font-weight: bolder;
+    border: 1px solid rgba(0, 255, 0, 0.4);
+    background: black;
+    border-radius: 2vh;
+    margin-top: 1vh;
+    height: 10vh;
+    width: 36vh;
+    padding: 2vh;
+}
+
 .right-list {
     list-style: none;
     margin-top: 2vh;
+    margin-right: 2vh;
     padding-bottom: 6vh;
     font-size: 2vh;
     padding: 1vh;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
-    height: 100%;
-    
+    justify-content: space-around;
+    align-items: center;
+    height: 80%; 
+    background: rgba(0, 0, 0, 0.424);
+    border: 1px solid rgba(0, 255, 0, 0.3); 
+    border-radius: 2vh; 
     
 }
 
-.right-list li {
-    margin-bottom: 6vh;
+.list-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2vh;
+    padding-bottom: 2vh;
 }
+
 
 .right-header {
     font-size: 3vh;
@@ -195,7 +228,7 @@ img {
 .footer {
     grid-column: 1 / 6;
     grid-row: 20 / 21;
-    color: lime;
+    color: rgba(0, 255, 0, 0.5);
     background: rgb(8, 8, 8, 0.2);
     width: 100%;
     display: flex;
