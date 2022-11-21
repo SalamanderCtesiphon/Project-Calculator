@@ -49,7 +49,8 @@ a {
     grid-row: 3 / 20;
     padding-left: 1vw;
     height: 105%;
-    border: 1px solid rgba(0, 255, 0, 0.4);
+    border-right: 1px solid rgba(0, 255, 0, 0.4);
+    border-bottom: 1px solid rgba(0, 255, 0, 0.4);
     background: rgb(0, 0, 0);
     border-radius: 0 0 0 10px;
     margin-left: 1vh;
@@ -68,8 +69,8 @@ a {
     padding: 1vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 20%;
+    justify-content: space-around;
+    height: 30%;
 }
 
 .main {
