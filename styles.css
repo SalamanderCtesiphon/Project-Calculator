@@ -120,7 +120,7 @@ a:hover {
 
 .memory {
     font-size: 3vh;
-    color: rgba(0, 255, 0, 0.307);
+    color: rgba(0, 255, 0, 0.5);
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
