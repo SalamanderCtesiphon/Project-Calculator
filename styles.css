@@ -89,7 +89,7 @@ a:hover {
 }
 
 .calculator {
-    min-width: 300px;
+    min-width: 330px;
     max-width: 330px;
     height: 60vh;
     max-height: fit-content;
